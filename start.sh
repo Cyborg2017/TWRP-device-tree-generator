@@ -2,7 +2,6 @@
 #
 # Copyright (C) 2020 The Android Open Source Project
 # Copyright (C) 2020 The TWRP Open Source Project
-# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,14 +38,6 @@ source ./tools/user_interaction.sh
 set_colors
 clean_screen
 logo
-
-LAST_COMMIT=$(git log -1 --format="%h")
-if [ ${#LAST_COMMIT} != 7 ]; then
-	error "Failed retreiving last git commit
-Please use git clone, and don't download repo zip file
-If you don't have it, also install git"
-	exit
-fi
 
 # Ask user for device info because we don't use build.prop
 logo
