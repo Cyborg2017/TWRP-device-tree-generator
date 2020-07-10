@@ -374,7 +374,10 @@ if [ -f "$SPLITIMG_DIR/$DEVICE_CODENAME.img-recoverydtbo" ]; then
 fi
 
 # Check if a fstab is present
-if [ -f "$RAMDISK_DIR/etc/twrp.fstab" ]; then
+if [ "${DEVICE_PLATFORM}" == "617" ] || [ "${DEVICE_PLATFORM}" == "650" ] || [ "${DEVICE_PLATFORM}" == "652" ]; then
+  cp "./addition/msm8952/recovery.fstab" "$DEVICE_TREE_PATH/recovery.fstab"
+else
+  if [ -f "$RAMDISK_DIR/etc/twrp.fstab" ]; then
 	logstep "A TWRP fstab has been found, copying it..."
 	cp "$RAMDISK_DIR/etc/twrp.fstab" "$DEVICE_TREE_PATH/recovery.fstab"
 	# Do a quick check if vendor partition is present
@@ -382,17 +385,18 @@ if [ -f "$RAMDISK_DIR/etc/twrp.fstab" ]; then
 		DEVICE_HAS_VENDOR_PARTITION=true
 	fi
 	logdone
-elif [ -f "$RAMDISK_DIR/etc/recovery.fstab" ]; then
+  elif [ -f "$RAMDISK_DIR/etc/recovery.fstab" ]; then
 	logstep "Extracting fstab..."
 	cp "$RAMDISK_DIR/etc/recovery.fstab" "$DEVICE_TREE_PATH/fstab.temp"
 	logdone
-elif [ -f "$RAMDISK_DIR/system/etc/recovery.fstab" ]; then
+  elif [ -f "$RAMDISK_DIR/system/etc/recovery.fstab" ]; then
 	logstep "Extracting fstab..."
 	cp "$RAMDISK_DIR/system/etc/recovery.fstab" "$DEVICE_TREE_PATH/fstab.temp"
 	logdone
-else
+  else
 	error "The script haven't found any fstab, so you will need to make your own fstab based on what partitions you have"
 	logerror "The script haven't found any fstab"
+  fi      
 fi
 
 # Check if recovery.wipe is there
