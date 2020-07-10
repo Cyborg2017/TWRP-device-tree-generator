@@ -636,6 +636,7 @@ echo "# TWRP Configuration (base)
 TW_THEME := portrait_hdpi
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_MAX_BRIGHTNESS := 255
+#TW_MAX_BRIGHTNESS := 4095 # for some devices with 4095 brightness level
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_EXCLUDE_SUPERSU := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
