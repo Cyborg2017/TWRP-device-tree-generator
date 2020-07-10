@@ -185,7 +185,7 @@ if [ -f "$SCRIPT_PWD/$DEVICE_CODENAME.log" ]; then
 fi
 loginfo "
 ------------------------------------------------------------------------
-SebaUbuntu's TWRP device tree generator
+TWRP device tree generator
 Version=$VERSION
 Device name=$DEVICE_FULL_NAME
 Device codename=$DEVICE_CODENAME
@@ -777,16 +777,9 @@ logstep "Creating ready-to-push git repo..."
 git init -q
 git add -A
 # Please don't be an ass and keep authorship
-git commit -m "$DEVICE_CODENAME: initial TWRP device tree
+git commit -m "$DEVICE_CODENAME: Initial twrp device tree
 
-Made with SebaUbuntu's TWRP device tree generator
-Arch: $DEVICE_ARCH
-Manufacturer: $DEVICE_MANUFACTURER
-Device full name: $DEVICE_FULL_NAME
-Script version: $VERSION
-Last script commit: $LAST_COMMIT
-
-Signed-off-by: Sebastiano Barezzi <barezzisebastiano@gmail.com>" --author "Sebastiano Barezzi <barezzisebastiano@gmail.com>" -q
+Signed-off-by: Cyborg2017 <wangyang0987654@gmail.com>" --author "Cyborg2017 <wangyang0987654@gmail.com>" -q
 logdone
 
 echo "Device tree successfully made, you can find it in $DEVICE_TREE_PATH
