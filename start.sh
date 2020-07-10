@@ -632,12 +632,30 @@ if [ "$DEVICE_IS_AB" = 1 ]; then
 TW_INCLUDE_REPACKTOOLS := true" >> BoardConfig.mk
 fi
 
-echo "# TWRP Configuration
+echo "# TWRP Configuration (base)
 TW_THEME := portrait_hdpi
-TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
-TW_INPUT_BLACKLIST := \"hbtp_vm\"
-TW_USE_TOOLBOX := true" >> BoardConfig.mk
+TW_MAX_BRIGHTNESS := 255
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_EXCLUDE_SUPERSU := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+RECOVERY_SDCARD_ON_DATA := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
+TW_USE_TOOLBOX := true
+
+# TWRP Configuration (encryption)
+BOARD_USES_QCOM_HARDWARE := true
+TW_INCLUDE_CRYPTO := true
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_PROVIDES_KEYMASTER := true
+TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/commonsys/cryptfs_hw
+
+# TWRP Configuration (extra language)
+TW_EXTRA_LANGUAGES := true
+TW_DEFAULT_LANGUAGE := zh_CN">> BoardConfig.mk
 logdone
 
 case $RAMDISK_COMPRESSION in
