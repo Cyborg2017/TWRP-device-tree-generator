@@ -84,6 +84,14 @@ fi
 clean_screen
 
 logo
+DEVICE_ANDROID_VERSION=$(get_info "Insert the device android version (eg. 7.x/8.x/9.0/10.0 etc.)")
+if [ -z "DEVICE_ANDROID_VERSION" ]; then
+	error "Device android version can't be empty"
+	exit
+fi
+clean_screen
+
+logo
 DEVICE_PLATFORM=$(get_info "Insert the device platform (eg. 617/625/626/652/660/710/835/845/855/865 etc.)")
 if [ "${DEVICE_PLATFORM}" == "617" ]; then
        BOARD_PLATFORM=msm8952
