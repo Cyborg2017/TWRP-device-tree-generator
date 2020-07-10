@@ -95,7 +95,8 @@ fi
 clean_screen
 
 logo
-DEVICE_STOCK_RECOVERY_PATH=$(get_file_path "recovery image (or a boot image if the device is A/B)" "*.img")
+#DEVICE_STOCK_RECOVERY_PATH=$(get_file_path "recovery image (or a boot image if the device is A/B)" "*")
+DEVICE_STOCK_RECOVERY_PATH=./image/recovery.img
 if [ ! -f "$DEVICE_STOCK_RECOVERY_PATH" ]; then
 	error "File not found"
 	exit
