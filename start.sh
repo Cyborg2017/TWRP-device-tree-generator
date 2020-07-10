@@ -345,7 +345,7 @@ fi
 # Extract init.rc files
 logstep "Extracting init.rc files..."
 for i in $(ls $RAMDISK_DIR | grep ".rc"); do
-	if [ "$i" != init.rc ]; then
+	if [ "$i" != init.rc ] && [ "$i" != ueventd.rc ]; then
 		cp "$RAMDISK_DIR/$i" "$DEVICE_TREE_PATH/recovery/root"
 	fi
 done
