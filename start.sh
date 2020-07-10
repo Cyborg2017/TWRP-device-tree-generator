@@ -142,6 +142,10 @@ fi
 clean_screen
 
 logo
+DEVICE_AVB_VERSION=$(get_info "Insert the device avb version (eg. 0.0/1.0/2.0 etc.)")
+clean_screen
+
+logo
 DEVICE_IS_AB=$(get_boolean "Is the device A/B?")
 if [ -z "$DEVICE_IS_AB" ]; then
 	info "Nothing inserted, assuming A-only device"
