@@ -84,6 +84,56 @@ fi
 clean_screen
 
 logo
+DEVICE_PLATFORM=$(get_info "Insert the device platform (eg. 617/625/626/652/660/710/835/845/855/865 etc.)")
+if [ "${DEVICE_PLATFORM}" == "617" ]; then
+       BOARD_PLATFORM=msm8952
+	BOARD_PLATFORM_GPU=qcom-adreno405
+elif [ "${DEVICE_PLATFORM}" == "625" ] || [ "${BOARD_PLATFORM}" == "626" ]; then
+       BOARD_PLATFORM=msm8953
+	BOARD_PLATFORM_GPU=qcom-adreno506
+elif [ "${DEVICE_PLATFORM}" == "630" ]; then
+       BOARD_PLATFORM=sdm630
+	BOARD_PLATFORM_GPU=qcom-adreno508
+elif [ "${DEVICE_PLATFORM}" == "632" ]; then
+       BOARD_PLATFORM=sdm632
+	BOARD_PLATFORM_GPU=qcom-adreno506
+elif [ "${DEVICE_PLATFORM}" == "636" ]; then
+       BOARD_PLATFORM=sdm636
+	BOARD_PLATFORM_GPU=qcom-adreno509
+elif [ "${DEVICE_PLATFORM}" == "650" ]; then
+       BOARD_PLATFORM=msm8952
+	BOARD_PLATFORM_GPU=qcom-adreno510
+elif [ "${DEVICE_PLATFORM}" == "652" ] || [ "${BOARD_PLATFORM}" == "653" ]; then
+       BOARD_PLATFORM=msm8952
+	BOARD_PLATFORM_GPU=qcom-adreno510
+elif [ "${DEVICE_PLATFORM}" == "660" ]; then
+       BOARD_PLATFORM=sdm660
+	BOARD_PLATFORM_GPU=qcom-adreno612
+elif [ "${DEVICE_PLATFORM}" == "670" ]; then
+       BOARD_PLATFORM=sdm660
+	BOARD_PLATFORM_GPU=qcom-adreno615
+elif [ "${DEVICE_PLATFORM}" == "675" ]; then
+       BOARD_PLATFORM=sdm660
+	BOARD_PLATFORM_GPU=qcom-adreno512
+elif [ "${DEVICE_PLATFORM}" == "820" ] || [ "${DEVICE_PLATFORM}" == "821" ]; then
+       BOARD_PLATFORM=msm8996
+	BOARD_PLATFORM_GPU=qcom-adreno530
+elif [ "${DEVICE_PLATFORM}" == "835" ]; then
+       BOARD_PLATFORM=msm8998
+	BOARD_PLATFORM_GPU=qcom-adreno540
+elif [ "${DEVICE_PLATFORM}" == "845" ]; then
+       BOARD_PLATFORM=msdm845
+	BOARD_PLATFORM_GPU=qcom-adreno630
+elif [ "${DEVICE_PLATFORM}" == "855" ]; then
+       BOARD_PLATFORM=msmnile
+	BOARD_PLATFORM_GPU=qcom-adreno640
+elif [ "${DEVICE_PLATFORM}" == "865" ]; then
+       BOARD_PLATFORM=kona
+	BOARD_PLATFORM_GPU=qcom-adreno650
+fi
+clean_screen
+
+logo
 DEVICE_IS_AB=$(get_boolean "Is the device A/B?")
 if [ -z "$DEVICE_IS_AB" ]; then
 	info "Nothing inserted, assuming A-only device"
@@ -534,9 +584,8 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 fi
 
 echo "# Platform
-# Fix this
-#TARGET_BOARD_PLATFORM := 
-#TARGET_BOARD_PLATFORM_GPU := 
+TARGET_BOARD_PLATFORM := $BOARD_PLATFORM
+TARGET_BOARD_PLATFORM_GPU := $BOARD_PLATFORM_GPU
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := $DEVICE_CODENAME
