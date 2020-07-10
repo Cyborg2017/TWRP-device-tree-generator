@@ -632,6 +632,18 @@ if [ "$DEVICE_IS_AB" = 1 ]; then
 TW_INCLUDE_REPACKTOOLS := true" >> BoardConfig.mk
 fi
 
+if [ "${DEVICE_AVB_VERSION}" == "1.0" ] || [ "${DEVICE_AVB_VERSION}" == "2.0" ]; then
+echo "# Android Verified Boot
+BOARD_AVB_ENABLE := true
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1" >> BoardConfig.mk
+else
+logstep "Your device don't need android verified boot..."
+fi
+
+
 echo "# TWRP Configuration (base)
 TW_THEME := portrait_hdpi
 TW_SCREEN_BLANK_ON_BOOT := true
