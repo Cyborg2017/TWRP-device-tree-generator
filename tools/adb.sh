@@ -36,3 +36,11 @@ adb_get_prop() {
 adb_get_file() {
 	adb pull "$1"
 }
+
+adb_get_cat() {
+	adb shell cat "$1"
+}
+
+adb_get_ls() {
+	adb shell ls -l "$1"
+}
