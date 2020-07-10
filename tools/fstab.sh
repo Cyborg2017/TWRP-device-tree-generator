@@ -55,7 +55,8 @@ generate_fstab() {
 		# Add External SDCard entry
 		echo "
 # External storage
-/sdcard1			vfat	/dev/block/mmcblk1p1 /dev/block/mmcblk1	flags=fsflags=utf8;display="SDcard";storage;wipeingui;removable" >> recovery.fstab
+/sdcard1			vfat	/dev/block/mmcblk1p1 /dev/block/mmcblk1	flags=fsflags=utf8;display="SDcard";storage;wipeingui;removable
+/usb-otg          vfat     /dev/block/sda1  /dev/block/sda            flags=display="usb-otg";storage;wipeingui;removable;fsflags="utf8" " >> recovery.fstab
 	else
 		logerror "fstab not found!"
 	fi
