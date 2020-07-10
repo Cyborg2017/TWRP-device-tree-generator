@@ -598,6 +598,10 @@ TARGET_BOARD_PLATFORM_GPU := $BOARD_PLATFORM_GPU
 TARGET_OTA_ASSERT_DEVICE := $DEVICE_CODENAME
 
 # Partitions
+#BOARD_PARTITION_INFO=$(adb_get_cat /proc/partitions)
+#BOARD_PARTITION_INFO2=$(adb_get_ls /dev/block/platform/soc/7824900.sdhci/by-name)
+#BOARD_PARTITION_INFO3=$(adb_get_ls /dev/block/platform/soc.0/7824900.sdhci/by-name)
+#BOARD_PARTITION_INFO3=$(adb_get_ls /dev/block/platform/soc/c0c4000.sdhci/by-name)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 
 BOARD_CACHEIMAGE_PARTITION_SIZE := 
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 
