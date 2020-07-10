@@ -1,9 +1,8 @@
 #!/bin/bash
 license_headers() {
 	echo "#
-# Copyright (C) $DEVICE_YEAR_RELEASE The Android Open Source Project
-# Copyright (C) $DEVICE_YEAR_RELEASE The TWRP Open Source Project
-# Copyright (C) $CURRENT_YEAR SebaUbuntu's TWRP device tree generator 
+# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) $CURRENT_YEAR The TWRP Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the \"License\");
 # you may not use this file except in compliance with the License.
