@@ -400,7 +400,7 @@ logdone
 
 # BoardConfig.mk
 logstep "Generating BoardConfig.mk..."
-echo "DEVICE_PATH := device/$DEVICE_TREE_PATH
+echo "LOCAL_PATH := device/$DEVICE_TREE_PATH
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -469,15 +469,15 @@ fi
 
 # Check for dtb image and add it to BoardConfig.mk
 if [ -f prebuilt/dt.img ]; then
-	echo "TARGET_PREBUILT_KERNEL := \$(DEVICE_PATH)/prebuilt/kernel
-TARGET_PREBUILT_DTB := \$(DEVICE_PATH)/prebuilt/dt.img" >> BoardConfig.mk
+	echo "TARGET_PREBUILT_KERNEL := \$(LOCAL_PATH)/prebuilt/kernel
+TARGET_PREBUILT_DTB := \$(LOCAL_PATH)/prebuilt/dt.img" >> BoardConfig.mk
 else
-	echo "TARGET_PREBUILT_KERNEL := \$(DEVICE_PATH)/prebuilt/Image.gz-dtb" >> BoardConfig.mk
+	echo "TARGET_PREBUILT_KERNEL := \$(LOCAL_PATH)/prebuilt/Image.gz-dtb" >> BoardConfig.mk
 fi
 
 # Check for dtbo image and add it to BoardConfig.mk
 if [ -f prebuilt/dtbo.img ]; then
-	echo "BOARD_PREBUILT_DTBOIMAGE := \$(DEVICE_PATH)/prebuilt/dtbo.img
+	echo "BOARD_PREBUILT_DTBOIMAGE := \$(LOCAL_PATH)/prebuilt/dtbo.img
 BOARD_INCLUDE_RECOVERY_DTBO := true" >> BoardConfig.mk
 fi
 
@@ -496,7 +496,7 @@ if [ -f prebuilt/dt.img ]; then
 fi
 
 if [ "$DEVICE_MANUFACTURER" = "samsung" ]; then
-	echo "BOARD_CUSTOM_BOOTIMG_MK := \$(DEVICE_PATH)/mkbootimg.mk" >> BoardConfig.mk
+	echo "BOARD_CUSTOM_BOOTIMG_MK := \$(LOCAL_PATH)/mkbootimg.mk" >> BoardConfig.mk
 fi
 
 # Add flags to support kernel building from source
@@ -565,7 +565,7 @@ PLATFORM_VERSION := 16.1.0
 if [ "$DEVICE_IS_AB" = 1 ]; then
 	echo "# A/B" >> BoardConfig.mk
 	if [ -f recovery.wipe ]; then
-		echo "TARGET_RECOVERY_WIPE := \$(DEVICE_PATH)/recovery/root/etc/recovery.wipe" >> BoardConfig.mk
+		echo "TARGET_RECOVERY_WIPE := \$(LOCAL_PATH)/recovery/root/etc/recovery.wipe" >> BoardConfig.mk
 	fi
 	echo "AB_OTA_UPDATER := true
 TW_INCLUDE_REPACKTOOLS := true" >> BoardConfig.mk
